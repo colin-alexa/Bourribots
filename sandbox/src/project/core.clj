@@ -7,8 +7,10 @@
 
 (def exblog (. client blogInfo "gamzee.tumblr.com"))
 
-;(defn get-name [] 
-;      (print 
-;	(. charmides getName)))
+(defn get-name [] 
+      (print 
+	(.
+	  exblog
+	  getTitle)))
 
-(defn -main [] "Fuck you, no")
+(defn -main [] (get-name))
