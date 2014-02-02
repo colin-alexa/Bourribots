@@ -7,10 +7,15 @@
 
 (def exblog (. client blogInfo "gamzee.tumblr.com"))
 
-(defn get-name [] 
+(defn last-post [blog]
+      (first (. blog posts)))
+
+(defn text-post? [post] (instance? com.tumblr.jumblr.types.TextPost post))
+
+(defn method-test [] 
       (print 
 	(.
 	  exblog
-	  getTitle)))
+	  posts)))
 
-(defn -main [] (get-name))
+(defn -main [] (text-post? (last-post exblog)))
