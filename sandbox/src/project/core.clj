@@ -2,8 +2,8 @@
     (:import (com.tumblr.jumblr JumblrClient)))
 
 (def client (new JumblrClient
-		 "WDXZgPZj1bkFbQIrEYNKMTy4UEjKYDxoVvQTKFUZj0LxHiQuJc"
-		 "J1GgEilzQL794Tt5BS0gxv2wMkhiqm7rDEknbAmi1NjNC0IegJ"))
+		 "WDXZgPZj1bkFbQIrEYNKMTy4UEjKYDxoVvQTKFUZj0LxHiQuJc"  ; Key
+		 "J1GgEilzQL794Tt5BS0gxv2wMkhiqm7rDEknbAmi1NjNC0IegJ")); Consumer secret
 
 (def exblog (. client blogInfo "gamzee.tumblr.com"))
 
@@ -18,16 +18,19 @@
 	  exblog
 	  posts)))
 
-(defn nph [blog n]
+(defn n-posts [blog n]
       (loop [offset 0
 	     coll []]
 	    (if (< (- n (+ offset 20)) 1)
 	        (concat coll (. blog posts {"offset" offset "limit" (- n offset)}))
-	        (recur (+ offset 20) (concat coll (. blog posts {"offset" offset})))))) 
+	        (recur (+ offset 20) (concat coll (. blog posts {"offset" offset}))))))
 
-(defn n-posts [blog n]
-      (if (<= n 20)
-	  (. blog posts {"limit" n})
-	  (nph blog n)))
+; TODO: 
+;  posts by date
+;  n-posts with offset
 
-(defn -main [] (count (nph exblog 53)))
+;(defn who-liked [posts]
+      
+      
+
+(defn -main [] (. (first (. exblog posts {"limit" 1 "notes_info" true})) getNotes  ))
