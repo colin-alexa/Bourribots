@@ -18,19 +18,29 @@
 	  exblog
 	  posts)))
 
-(defn n-posts [blog n]
-      (loop [offset 0
-	     coll []]
-	    (if (< (- n (+ offset 20)) 1)
-	        (concat coll (. blog posts {"offset" offset "limit" (- n offset)}))
-	        (recur (+ offset 20) (concat coll (. blog posts {"offset" offset}))))))
+(defn n-posts ([blog n]
+		(loop [offset 0
+		       coll []]
+		      (if (< (- n (+ offset 20)) 1)
+			  (concat coll (. blog posts {"offset" offset "limit" (- n offset)}))
+			  (recur (+ offset 20) (concat coll (. blog posts {"offset" offset}))))))
+      
+	      ([blog n opts]
+		(loop [offset 0
+		       coll []]
+		      (if (< (- n (+ offset 20)) 1)
+			  (concat coll (. blog posts (merge opts {"offset" offset "limit" (- n offset)})))
+			  (recur (+ offset 20) (concat coll (. blog posts {"offset" offset})))))))
 
 ; TODO: 
 ;  posts by date
 ;  n-posts with offset
 
-;(defn who-liked [posts]
-      
-      
+(defn get-notes-n-posts [blog n]
+      (let [posts (n-posts blog n {"notes_info" true})]
+	    (map vector
+		 posts
+		 (map #(. % getNotes) posts))))
+	   
 
-(defn -main [] (. (first (. exblog posts {"limit" 1 "notes_info" true})) getNotes  ))
+(defn -main [] (get-notes-n-posts exblog 5))
