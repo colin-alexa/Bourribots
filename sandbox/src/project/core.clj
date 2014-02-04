@@ -9,6 +9,9 @@
 
 (defn last-post [blog]
       (first (. blog posts {"offset" 10000})))
+      
+(defn first-post [blog]
+      (last (. blog posts {})))
 
 (defn text-post? [post] (instance? com.tumblr.jumblr.types.TextPost post))
 
@@ -41,6 +44,7 @@
 	    (map vector
 		 posts
 		 (map #(. % getNotes) posts))))
+
 	   
 
 (defn -main [] (get-notes-n-posts exblog 5))
