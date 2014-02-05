@@ -1,0 +1,8 @@
+
+
+
+Thinking about how/when bots are active:
+-"rounds" method, each bot takes turns making actions
+-are bursts of activity going to mess us up/get us kicked?
+-taking actions on a delay?
+-how do we get multiple OAuth/multiple tumblrs under one OAuth?
