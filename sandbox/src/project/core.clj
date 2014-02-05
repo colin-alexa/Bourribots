@@ -45,6 +45,12 @@
 		 posts
 		 (map #(. % getNotes) posts))))
 
+; Need a "get random" blogs. How to do this?
+; Other needs:
+; -get blogs with "x" tag
+; -get blogs/posts in x-y time period
+; -get with x# of tags
+; -get with x# of likes/reblogs/notes
 	   
 
 (defn -main [] (get-notes-n-posts exblog 5))
