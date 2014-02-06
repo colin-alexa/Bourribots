@@ -53,4 +53,4 @@
 ; -get with x# of likes/reblogs/notes
 	   
 
-(defn -main [] (get-notes-n-posts exblog 5))
+(defn -main [] (method-test))
