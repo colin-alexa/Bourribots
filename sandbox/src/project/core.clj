@@ -21,7 +21,7 @@
 	  exblog
 	  posts)))
 
-(defn n-posts ([blog n]
+(defn n-posts-from-blog ([blog n]
 		(loop [offset 0
 		       coll []]
 		      (if (< (- n (+ offset 20)) 1)
@@ -40,7 +40,7 @@
 ;  n-posts with offset
 
 (defn get-notes-n-posts [blog n]
-      (let [posts (n-posts blog n {"notes_info" true})]
+      (let [posts (n-posts-from-blog blog n {"notes_info" true})]
 	    (map vector
 		 posts
 		 (map #(. % getNotes) posts))))
