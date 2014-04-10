@@ -35,22 +35,20 @@
 			  (concat coll (. blog posts (merge opts {"offset" offset "limit" (- n offset)})))
 			  (recur (+ offset 20) (concat coll (. blog posts {"offset" offset})))))))
 
-; TODO: 
-;  posts by date
-;  n-posts with offset
-
 (defn get-notes-n-posts [blog n]
       (let [posts (n-posts-from-blog blog n {"notes_info" true})]
 	    (map vector
 		 posts
 		 (map #(. % getNotes) posts))))
+; TODO: 
+;  posts by date
+;  n-posts with offset
+;  Need a "get random" blogs. How to do this?
+;  Other needs:
+;  -get blogs with "x" tag
+;  -get blogs/posts in x-y time period
+;  -get with x# of tags
+;  -get with x# of likes/reblogs/notes
 
-; Need a "get random" blogs. How to do this?
-; Other needs:
-; -get blogs with "x" tag
-; -get blogs/posts in x-y time period
-; -get with x# of tags
-; -get with x# of likes/reblogs/notes
-	   
 
 (defn -main [] (method-test))
