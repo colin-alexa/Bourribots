@@ -1,0 +1,7 @@
+LOG:  database system was shut down at 2014-04-10 16:59:08 PDT
+LOG:  autovacuum launcher started
+FATAL:  role "colin" does not exist
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

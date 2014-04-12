@@ -1,0 +1,3 @@
+#! /bin/sh
+/usr/lib/postgresql/9.1/bin/pg_ctl -D /var/lib/postgresql/9.1/main stop
+/usr/lib/postgresql/9.1/bin/postgres -D db > .db.log 2>&1 &

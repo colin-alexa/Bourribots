@@ -1,1 +1,1 @@
-/usr/lib/postgresql/9.1/bin/postgres "-D" "./db"
+/usr/lib/postgresql/9.1/bin/postgres "-D" "db"
