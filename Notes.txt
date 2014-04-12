@@ -1,0 +1,3 @@
+Using jumblr 0.0.7-SNAPSHOT now, since 0.0.6 (the current standard build) doesn't have accessors to notes on posts--which is unacceptable.
+This requires a little more setup on the local machine, but not that much. Importantly, it requires Maven. Aside from that it's really simple.
+Rebar, if you have questions you can ask me. I got it working on my machine pretty easily, but it did take some trial and error.
