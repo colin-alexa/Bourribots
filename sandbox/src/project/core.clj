@@ -1,4 +1,5 @@
 (ns project.core
+    (:require [project.db.core :as db])
     (:import (com.tumblr.jumblr JumblrClient)))
 
 (def client (new JumblrClient
@@ -51,4 +52,4 @@
 ;  -get with x# of likes/reblogs/notes
 
 
-(defn -main [] (method-test))
+(defn -main [] (db/select-test))
