@@ -1,5 +1,5 @@
-(ns project.core
-    (:require [project.db.core :as db])
+(ns project.core )
+    (:require [project.db.korma :as db])
     (:import (com.tumblr.jumblr JumblrClient)))
 
 (def client (new JumblrClient
