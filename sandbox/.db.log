@@ -1,55 +1,44 @@
-LOG:  database system was shut down at 2014-04-21 13:01:00 PDT
+LOG:  database system was shut down at 2014-05-27 01:10:13 PDT
+LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
-ERROR:  relation "test1" does not exist at character 85
-STATEMENT:  SELECT "test1"."lastname", "test1"."firstname", "test1"."age", "test1"."party" FROM "test1"
-LOG:  unexpected EOF on client connection
-ERROR:  syntax error at or near "psql" at character 1
-STATEMENT:  psql <<EOF
-	DROP TABLE test1;
-ERROR:  syntax error at or near "EOF" at character 1
-STATEMENT:  EOF
-ERROR:  relation "test1" does not exist at character 85
-STATEMENT:  SELECT "test1"."lastname", "test1"."firstname", "test1"."age", "test1"."party" FROM "test1"
-LOG:  unexpected EOF on client connection
-LOG:  unexpected EOF on client connection
-ERROR:  relation "test1" already exists
-STATEMENT:  CREATE TABLE test1 (
-	  lastname varchar(255),
-	  firstname varchar(255),
-	  age  int,
-	  party  varchar(5)
+ERROR:  table "blogs" does not exist
+STATEMENT:  DROP TABLE blogs;
+ERROR:  syntax error at or near "(" at character 71
+STATEMENT:  CREATE TABLE posts (
+	  id 		int PRIMARY KEY,
+	  user_id 	int references(users(id));
 	);
-ERROR:  syntax error at or near ";" at character 131
-STATEMENT:  INSERT INTO test1 (lastname, firstname, age, party)
-	VALUES (  ('Greener', 'Ima', 20, 'Ind'),
-	('Person', 'Imaginary', 111, 'Green');
-	EOF
-	ls
-	cds
-	;
-	;
-	;
-	;
-	;
-	;
-	;
-	)
-	;
-ERROR:  argument of WHERE must be type boolean, not type integer at character 27
-STATEMENT:  select * from test1 where 1
-	;
-ERROR:  permission denied for relation test1
-STATEMENT:  SELECT "test1"."lastname", "test1"."firstname", "test1"."age", "test1"."party" FROM "test1"
+ERROR:  table "posts" does not exist
+STATEMENT:  DROP TABLE posts;
+ERROR:  table "blogs" does not exist
+STATEMENT:  DROP TABLE blogs;
+ERROR:  syntax error at or near ";" at character 81
+STATEMENT:  CREATE TABLE posts (
+	  id 		int PRIMARY KEY,
+	  user_id 	int REFERENCES users(id);
+	);
+ERROR:  table "posts" does not exist
+STATEMENT:  DROP TABLE posts;
+ERROR:  table "blogs" does not exist
+STATEMENT:  DROP TABLE blogs;
+ERROR:  cannot drop table users because other objects depend on it
+DETAIL:  constraint posts_user_id_fkey on table posts depends on table users
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP TABLE users;
+ERROR:  table "blogs" does not exist
+STATEMENT:  DROP TABLE blogs;
+ERROR:  table "post_tags" does not exist
+STATEMENT:  DROP TABLE post_tags;
+ERROR:  relation "users" already exists
+STATEMENT:  CREATE TABLE users (
+	  id		SERIAL PRIMARY KEY,
+	  name		varchar(255),
+	  url		text
+	);
 LOG:  unexpected EOF on client connection
 LOG:  unexpected EOF on client connection
-LOG:  invalid length of startup packet
-LOG:  incomplete startup packet
-ERROR:  permission denied for relation test1
-STATEMENT:  SELECT "test1"."lastname", "test1"."firstname", "test1"."age", "test1"."party" FROM "test1"
 LOG:  unexpected EOF on client connection
 LOG:  unexpected EOF on client connection
-ERROR:  permission denied for relation test1
-STATEMENT:  select * from test1;
-ERROR:  relation "bourribots" does not exist
-STATEMENT:  alter table bourribots owner to bourribots;
+LOG:  unexpected EOF on client connection
+LOG:  unexpected EOF on client connection
 LOG:  unexpected EOF on client connection
