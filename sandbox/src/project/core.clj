@@ -1,5 +1,8 @@
-(ns project.core )
-    (:require [project.db.korma :as db])
+(ns project.core 
+    (:require [project.db.korma :as my-korma]
+	      [project.db.core :as db-utils])
+    (:use korma.db
+	  korma.core)
     (:import (com.tumblr.jumblr JumblrClient)))
 
 (def client (new JumblrClient
@@ -10,7 +13,7 @@
 
 (defn last-post [blog]
       (first (. blog posts {"offset" 10000})))
-      
+
 (defn first-post [blog]
       (last (. blog posts {})))
 
@@ -28,7 +31,7 @@
 		      (if (< (- n (+ offset 20)) 1)
 			  (concat coll (. blog posts {"offset" offset "limit" (- n offset)}))
 			  (recur (+ offset 20) (concat coll (. blog posts {"offset" offset}))))))
-      
+
 	      ([blog n opts]
 		(loop [offset 0
 		       coll []]
@@ -41,7 +44,19 @@
 	    (map vector
 		 posts
 		 (map #(. % getNotes) posts))))
-; TODO: 
+
+(defn get-hashtags-n-posts [blog n]
+      (let [posts (n-posts-from-blog blog n {"notes_info" true})] 
+	   (map vector
+		posts
+		(map #(. % getTags) posts))))
+
+(defn store-n-posts [blog n]
+      (let [posts (n-post-from-blog blog n)]
+	   ;INSERT INTO posts (id, user_id)
+	   )
+
+; TODO:
 ;  posts by date
 ;  n-posts with offset
 ;  Need a "get random" blogs. How to do this?
@@ -52,4 +67,5 @@
 ;  -get with x# of likes/reblogs/notes
 
 
-(defn -main [] (db/select-test))
+(defn -main [] (do (println (get-hashtags-n-posts exblog 5))
+		   (n-posts-from-blog exblog 5)))

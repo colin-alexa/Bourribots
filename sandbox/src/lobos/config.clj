@@ -7,6 +7,6 @@
    :subprotocol "postgresql"
    :user db-config/user
    :password db-config/pw
-   :subname "//localhost:5432/bourribots"})
+   :subname "//localhost:5432/test"})
 
 (open-global db) 
