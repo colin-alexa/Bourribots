@@ -1,6 +1,5 @@
 /pom.xml
 /lib
-./db/*
 *.jar
 /classes
 /native
