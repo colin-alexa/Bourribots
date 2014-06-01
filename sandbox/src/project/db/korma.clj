@@ -11,12 +11,12 @@
 			     ;this next one is a test, feel free to take it out
 			     :rando "some weird guy at this party idk"}))
 
-(defentity posts
-	   has-one users)
 (defentity users
-	   (entity-fields :id :name :url)
-	   (has-many posts))
+	   (entity-fields :id :name :url))
 
+(defentity posts
+	   (entity-fields :id :title :user_id)
+	   (has-one users))
 
 (defn select-test [] (print
 		 (select posts)))

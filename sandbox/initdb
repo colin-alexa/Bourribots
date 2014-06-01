@@ -1,0 +1,7 @@
+/usr/lib/postgresql/9.1/bin/initdb -D ./db/;
+
+psql << EOF
+\x
+CREATE ROLE bourribots PASSWORD '' LOGIN;
+CREATE DATABASE bourribots WITH owner=bourribots;
+CREATE DATABASE test WITH owner=bourribots;

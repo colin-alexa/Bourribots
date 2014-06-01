@@ -52,7 +52,7 @@
 		(map #(. % getTags) posts))))
 
 (defn store-n-posts [blog n]
-      (let [posts (n-post-from-blog blog n)]
+      (let [posts (n-posts-from-blog blog n)]
 	   ;INSERT INTO posts (id, user_id)
 	   )
 
@@ -68,4 +68,4 @@
 
 
 (defn -main [] (do (println (get-hashtags-n-posts exblog 5))
-		   (n-posts-from-blog exblog 5)))
+		   (n-posts-from-blog exblog 5))))

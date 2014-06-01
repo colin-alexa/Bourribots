@@ -1,5 +1,5 @@
 #! /bin/sh
 mkdir -m 770 /var/run/postgresql
 chown postgres /var/run/postgresql
-# /usr/lib/postgresql/9.1/bin/pg_ctl -D /var/lib/postgresql/9.1/main stop
+sudo -u postgres /usr/lib/postgresql/9.1/bin/pg_ctl -D /var/lib/postgresql/9.1/main stop
 sudo -u postgres /usr/lib/postgresql/9.1/bin/postgres -D db > .db.log 2>&1 &

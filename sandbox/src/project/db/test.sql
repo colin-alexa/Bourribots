@@ -14,24 +14,18 @@ VALUES			('Greener', 'Ima', 20, 'Ind'),
 
 DROP TABLE post_tags;
 DROP TABLE posts;
-DROP TABLE blogs;
 DROP TABLE users;
 
 
 CREATE TABLE users (
-  id		SERIAL PRIMARY KEY,
-  name		varchar(255),
-  url		text
+  id		PRIMARY KEY,
+  name		text
 );
 
 CREATE TABLE posts (
   id		int PRIMARY KEY,
+  title		text,
   user_id 	int REFERENCES users(id)
-);
-
-CREATE TABLE blogs (
-  name		text,
-  user_id	int REFERENCES users(id)
 );
 
 CREATE TABLE post_tags (
