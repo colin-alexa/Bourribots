@@ -18,5 +18,12 @@
 	   (entity-fields :id :title :user_id)
 	   (has-one users))
 
-(defn select-test [] (print
-		 (select posts)))
+(defentity hashtags
+	   (entity-fields :tag))
+
+(defentity post_tags
+	   (entity-fields :post_id :tag))
+
+(def blogs (select users))
+
+(def posts (select posts))
